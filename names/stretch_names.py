@@ -1,5 +1,4 @@
 import time
-from bst import BSTNode
 
 
 # Task 2. Runtime Optimization
@@ -44,31 +43,14 @@ duplicates = []  # Return the list of duplicates in this data structure
 """
 #           ^^^^ o(n)^2 ^^^^
 
-nodes = BSTNode('')
-
-for name in names_1:
-    # add names from 1st list to BST
-    nodes.insert(name)
-
-for name in names_2:
-    # If a name from the BST matches the name from the loop on 2nd list add
-    # that name to the duplicates list.
-    if nodes.contains(name):
-        duplicates.append(name)
-
-"""
-o(n)
-runtime: 0.12900376319885254 seconds
-"""
-
-end_time = time.time()
-print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print(f"runtime: {end_time - start_time} seconds")
-
 # ---------- Stretch Goal -----------
 # Python has built-in tools allowing a efficient approach to this problem
 # What's the best time you can accomplish?
 # Thare are no restrictions on techniques or data structures,
 # but you may not import additional libraries you did not write.
 
-print('\nSEE `stretch_names.py` FOR STRETCH GOAL ANSWER\n')
+stretch_duplicates = set(names_1).intersection(names_2)
+
+end_time = time.time()
+print(f"{len(stretch_duplicates)} stretch duplicates:\n\n{', '.join(stretch_duplicates)}\n\n")
+print(f"runtime: {end_time - start_time} seconds")

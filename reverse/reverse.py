@@ -1,3 +1,25 @@
+# Task 3. Reverse a Linked List
+
+"""
+Inside of the `reverse` directory, you'll find a basic implementation of
+a Singly Linked List. _Without_ making it a Doubly Linked List
+(adding a tail attribute), complete the `reverse_list()` function within
+`reverse/reverse.py`.
+
+For example,
+```
+1->2->3->None
+```
+would become...
+```
+3->2->1->None
+```
+
+While credit will be given for a functional solution,
+only optimal solutions will earn a ***3*** on this task.
+"""
+
+
 class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
@@ -11,6 +33,7 @@ class Node:
 
     def set_next(self, new_next):
         self.next_node = new_next
+
 
 class LinkedList:
     def __init__(self):
@@ -39,4 +62,12 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        if self.head is None or node.get_next() is None:
+            self.head = node
+            return
+        # reverse the rest
+        self.reverse_list(node.get_next(), prev=None)
+        temp = node.get_next()
+        temp.set_next(node)
+        node.set_next(None)
+        node.next_node = None
